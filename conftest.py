@@ -12,10 +12,6 @@ def auth_token():
     password = os.getenv('TEST_PASSWORD')
     api_base_url = os.getenv('API_BASE_URL')
 
-    print(f"Username: {username}")
-    print(f"Password: {'*' * len(password) if password else None}")
-    print(f"API URL: {api_base_url}")
-
     auth_response = requests.post(
         api_base_url + 'auth/login',
         data={
@@ -31,8 +27,6 @@ def auth_token():
         }
     )
 
-    print(f"Response status: {auth_response.status_code}")
-    print(f"Response body: {auth_response.text}")
 
     auth_response.raise_for_status()
 
